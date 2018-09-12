@@ -25,6 +25,7 @@ module ConsistencyFail
       private :desired_indexes
 
       def missing_indexes(model)
+        return [] unless model.connection.tables.include? model.table_name
         desired = desired_indexes(model)
 
         existing_indexes = desired.inject([]) do |acc, d|
