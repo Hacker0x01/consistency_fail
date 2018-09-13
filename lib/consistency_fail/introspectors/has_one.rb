@@ -17,15 +17,17 @@ module ConsistencyFail
           else
             foreign_key = a.primary_key_name
           end
-          ConsistencyFail::Index.new(a.klass,
-                                     a.table_name.to_s,
-                                     [foreign_key])
+
+          if ActiveRecord::Base.connection.table_exists? a.table_name.to_s
+            ConsistencyFail::Index.new(a.klass,
+                                       a.table_name.to_s,
+                                       [foreign_key])
+          end
         end.compact
       end
       private :desired_indexes
 
       def missing_indexes(model)
-        return [] unless model.connection.tables.include? model.table_name
         desired = desired_indexes(model)
 
         existing_indexes = desired.inject([]) do |acc, d|
