@@ -21,9 +21,10 @@ stop ignoring the C in ACID.
 EOF
   s.license = "MIT"
 
-  s.add_development_dependency "activerecord", "~>5.0"
+  s.add_development_dependency "activerecord", "~>6.0"
   s.add_development_dependency "sqlite3", "~>1.3"
   s.add_development_dependency "rspec", "~>3.2"
+  s.add_development_dependency "appraisal"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
