@@ -164,7 +164,7 @@ DEPENDENCIES
   appraisal
   consistency_fail!
   pry
-  rails (= 6.1.0.rc1)
+  rails (>= 6, < 7)
   rspec (~> 3.2)
   sqlite3 (~> 1.3)
 
